@@ -6,6 +6,7 @@
     "build-dev": "webpack --config webpack.config.js --progress --profile --colors",
     "lint": "eslint .",
     "start": "node ./bin/www",
+    "start-w": "webpack-dev-server",
     "test": "jest"
   },
   "dependencies": {
