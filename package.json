@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-dev": "webpack --config webpack.config.js --progress --profile --colors",
+    "build-prod": "SET NODE_ENV=production&&webpack -p --config webpack.config.js",
     "lint": "eslint .",
     "start": "node ./bin/www",
     "start-prod": "SET NODE_ENV=production&& node ./bin/www",
