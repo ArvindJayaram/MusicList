@@ -109,7 +109,6 @@ router.post('/add', async (req, res) => {
 
     // Save the artists to the MusicList DB if they're not already there
     const artistsSaved = await saveArtists(artistsInfo);
-    console.log(artistsSaved);
     if (!artistsSaved) { return JSON.stringify(new Error('There was a problem saving the artist to the database.')); }
 
     // Find the user we want to save to
@@ -142,6 +141,19 @@ router.post('/add', async (req, res) => {
   }
 
   return result;
+});
+
+// POST to /populate
+router.post('/populate', (req, res, next) => {
+  // Get album data from an array
+  Album.find({
+    discogsId: { $in: req.body },
+  }, (err, albums) => {
+    if (err) {
+      return res.json({ error: err.message });
+    }
+    return res.json(albums);
+  });
 });
 
 // POST to /search
