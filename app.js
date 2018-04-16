@@ -1,6 +1,7 @@
 const appConfig = require('./config.js');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const express = require('express');
 const expressSession = require('express-session')({
   secret: appConfig.expressSession.secret,
@@ -43,6 +44,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
